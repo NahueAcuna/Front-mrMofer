@@ -1,0 +1,22 @@
+<form [formGroup] = 'toiletForm' (submit) = "sendToilet()">
+    <input type="text" formControlName = "name" placeholder="Nombre">
+    @if(name.hasError('required') && name.touched){
+        <p>Campo obligatorio</p>
+    }@else if(name.hasError('maxlength')){
+        <p>Nombre muy largo</p>
+    }
+    <input type="text" formControlName = "price" placeholder="Precio">
+    @if(price.hasError('required') && price.touched){
+        <p>Campo obligatorio</p>
+    }@else if(price.hasError('min')){
+        <p>Este campo no puede ser negativo</p>
+    }
+    <input type="text" formControlName = "stock" placeholder="Stock">
+    @if(stock.hasError('min') && stock.touched){
+        <p>Este campo no puede ser negativo</p>
+    }
+    <input type="text" formControlName = "details" placeholder="Descripcion">
+    <input type="checkbox" formControlName="active" placeholder="">
+
+    <button type="submit">Crear</button>
+</form>

@@ -1,0 +1,11 @@
+<ul>
+    @for(toilet of toiletService.toilets; track $index){
+        
+        <li>
+            <h2>{{toilet.name}}</h2> 
+            <h3>{{toilet.stock}}</h3>
+        </li>
+        <button (click) = "deleteToilet(toilet.id)">Eliminar</button>
+        <button (click) = "putToilet(toilet.id)">Modificar</button>
+    }
+</ul>
