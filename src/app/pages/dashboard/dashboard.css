@@ -1,0 +1,184 @@
+.principal_container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3vh 3vw; 
+    box-sizing: border-box;
+}
+h2{
+    margin: 0;
+    font-size: 30px;
+}
+p{
+    margin-top: 1vh;
+    color: #555;
+}
+.kpi-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    display: flex;
+    margin-top: 4vh;
+    gap: 2vw;
+    justify-content: center;
+    align-items: center;
+}
+
+li{
+    display: flex;
+    list-style: none;
+    border-radius: 20px;
+    padding: 1.5vw;
+    align-items: start;
+    background-color: #fcfcfc;
+    width: 16vw; 
+    min-width: 220px; 
+    justify-content: space-between;
+    box-shadow: 0 0 15px -9px rgba(0, 0, 0, 0.8);
+
+}
+h3{
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+}
+.value{
+    font-size: 30px;
+    font-weight: 700;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 2.2vh;
+    align-items: flex-start
+}
+.important{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+}
+.material-symbols-outlined{
+    color: #2563eb;
+    padding: 0.5vw;
+    background-color: #e4ebf5;
+    border-radius: 10px;
+    font-size: 25px;
+}
+.comparative {
+    position: relative;
+    cursor: help;
+}
+.tooltip {
+    position: absolute;
+    bottom: 130%; /* Lo empujamos para que flote por encima del porcentaje */
+    right: 0; /* Lo alineamos a la derecha */
+    width: max-content; /* Se ajusta al tamaño del texto */
+    max-width: 200px; /* Para que no sea infinitamente largo */
+    background-color: #334155; /* Un gris oscuro azulado súper elegante */
+    color: white;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Asegura que no quede tapado por otras cosas */
+
+    /* La magia de la invisibilidad */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+/* 3. La flechita apuntando hacia abajo (El toque final) */
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Se pone justo debajo de la cajita oscura */
+    right: 15px; /* Alineada con tu porcentaje */
+    border-width: 6px;
+    border-style: solid;
+    border-color: #334155 transparent transparent transparent;
+}
+
+/* 4. El efecto de aparecer al pasar el mouse */
+.comparative:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: 150%; /* Se levanta un poquito al aparecer dando un efecto fluido */
+}
+.comparative span {
+    padding: 0.5vh 1vw;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+}
+
+/* 2. La clase para cuando te va bien (Verde) */
+.positivo {
+    color: #059669; 
+    background-color: #ecfdf5; 
+}
+
+/* 3. La clase para cuando los números bajan (Rojo) */
+.negativo {
+    color: #dc2626; 
+    background-color: #fef2f2; 
+}
+.chart-card{
+    display: flex;
+    margin-top: 4vh;
+    justify-content: space-between;
+    width: 100%;
+}
+.canvas-container{
+    border: 1px solid #f3f4f6;
+    background-color: #fcfcfc;
+    width: 900px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 0 15px -9px rgba(0, 0, 0, 0.8);
+}
+.donut-container{
+    flex-direction: column;
+    border: 1px solid #f3f4f6;
+    background-color: #fcfcfc;
+    width: 400px;
+    border-radius: 25px;
+    box-shadow: 0 0 15px -9px rgba(0, 0, 0, 0.8);
+}
+.donut{
+    padding: 0 60px 60px 60px;
+
+}
+.donut-container h2{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.chart-title{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.color-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%; /* Esto lo convierte en un círculo perfecto */
+  display: inline-block;
+}
+
+.units{
+    margin-top: 30px;
+}
+.caca{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}

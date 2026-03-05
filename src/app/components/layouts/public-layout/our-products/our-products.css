@@ -1,0 +1,93 @@
+h2{
+    text-align: center;
+    margin-top: 4vh;
+}
+.hero{
+    text-align: center;
+    margin-top: 2vh;
+}
+.component{
+    display: flex;
+    margin: 4vw;
+    justify-content: center;
+}
+li{
+    list-style: none;
+}
+.qualities{
+    display: flex;
+}
+.qualitie{
+    display: flex;
+}
+.card{
+    position: relative;
+    display: table-row;
+    width: 20vw;
+    margin: 2vw;
+    border: 1px solid #ddd;
+    padding: 1.2vw;
+    border-radius: 20px;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+.card.popular {
+    border: 2px solid #2563eb; /* Azul fuerte */
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15); /* Sombra azulada */
+    transform: scale(1.02); /* Un poquitito más grande que el resto */
+}
+.badge {
+    position: absolute;
+    top: -14px; /* Sube la etiqueta para que pise el borde */
+    left: 50%;
+    transform: translateX(-50%); /* Centra la etiqueta perfectamente */
+    
+    background-color: #2563eb; /* Fondo azul */
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px; /* Forma de píldora */
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+img{
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+}
+.container{
+    padding-bottom: 1vh;
+}
+.price{
+    color:#2563eb;
+    margin-bottom: 2vh;
+    margin-top: 1vh;
+    font-size: 28px;
+}
+h3{
+    font-size: 22px;
+}
+span{
+    color: rgb(44, 160, 44);
+}
+button{
+    margin-top: 2.5vh;
+    padding: 0.4vw;
+    border-radius: 5px;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    color: #F8F8FF;
+    background-color: #323223 ;
+    border: 1px solid;
+}
+.qualities{
+    margin-top: 2vh;
+}
+.qualitie{
+    margin-top: 1vh;
+    color:#555
+}
+

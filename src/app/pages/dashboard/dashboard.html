@@ -1,0 +1,147 @@
+<div class="principal_container">
+  <div class="dashboard">
+    <h2>Dashboard</h2>
+    <p>Bienvenido de nuevo! Esto es lo que pasa hoy.</p>
+
+    @if (kpis) {
+      <div class="kpi-container">
+        <ul>
+          <li>
+            <div class="content">
+              <span class="material-symbols-outlined">calendar_today</span>
+              <div class="important">
+                <h3>Reservas Activas</h3>
+                <span class="value">{{ kpis.activeReservationToday }}</span>
+              </div>
+            </div>
+
+            <div class="comparative">
+              <span
+                [ngClass]="{
+                  positivo: kpis.PreviousMonth_Reservations >= 0,
+                  negativo: kpis.PreviousMonth_Reservations < 0,
+                }"
+                >{{ kpis.PreviousMonth_Reservations | number: '1.0-0' }}%</span
+              >
+
+              @if (kpis.PreviousMonth_Reservations === 0) {
+                <div class="tooltip">No hay datos del mes anterior para comparar.</div>
+              }
+            </div>
+          </li>
+
+          <li>
+            <div class="content">
+              <span class="material-symbols-outlined">attach_money</span>
+              <div class="important">
+                <h3>Ingreso Mensual</h3>
+                <span class="value">{{
+                  kpis.monthlyRevenue | currency: 'USD' : 'symbol' : '1.0-0'
+                }}</span>
+              </div>
+            </div>
+            <div class="comparative">
+              <span
+                [ngClass]="{
+                  positivo: kpis.getPrevious_MonthlyRevenue >= 0,
+                  negativo: kpis.getPrevious_MonthlyRevenue < 0,
+                }"
+                >{{ kpis.getPrevious_MonthlyRevenue | number: '1.0-0' }}%</span
+              >
+
+              @if (kpis.getPrevious_MonthlyRevenue === 0) {
+                <div class="tooltip">No hay datos del mes anterior para comparar.</div>
+              }
+            </div>
+          </li>
+
+          <li>
+            <div class="content">
+              <span class="material-symbols-outlined">package_2</span>
+              <div class="important">
+                <h3>stock ocupado</h3>
+                <span class="value">{{ kpis.occupiedStockPercentage | number: '1.0-0' }}%</span>
+              </div>
+            </div>
+            <div class="comparative">
+              <span
+                [ngClass]="{
+                  positivo: kpis.PreviousMonth_ReservedToilets >= 0,
+                  negativo: kpis.PreviousMonth_ReservedToilets < 0,
+                }"
+                >{{ kpis.PreviousMonth_ReservedToilets | number: '1.0-0' }}%
+              </span>
+
+              @if (kpis.PreviousMonth_ReservedToilets === 0) {
+                <div class="tooltip">No hay datos del mes anterior para comparar.</div>
+              }
+            </div>
+          </li>
+
+          <li>
+            <div class="content">
+              <span class="material-symbols-outlined">person_add</span>
+              <div class="important">
+                <h3>Clientes Nuevos</h3>
+                <span class="value">{{ kpis.newClients }}</span>
+              </div>
+            </div>
+            <div class="comparative">
+              <span
+                [ngClass]="{
+                  positivo: kpis.previousMonth_getNewClients >= 0,
+                  negativo: kpis.previousMonth_getNewClients < 0,
+                }"
+                >{{ kpis.previousMonth_getNewClients | number: '1.0-0' }}%</span
+              >
+
+              @if (kpis.previousMonth_getNewClients === 0) {
+                <div class="tooltip">No hay datos del mes anterior para comparar.</div>
+              }
+            </div>
+          </li>
+        </ul>
+      </div>
+    } @else {
+      <p>Cargando métricas...</p>
+    }
+
+    <div class="chart-card">
+      <div class="canvas-container">
+        <h2 class="chart-title">Revenue Trends</h2>
+        <canvas baseChart type="line" [data]="lineChartData" [options]="lineChartOptions"> </canvas>
+      </div>
+      <div class="donut-container">
+        <h2 class="chart-title">Tipos de Baños Reservados</h2>
+        <div class="donut">
+          <canvas
+            baseChart
+            [data]="donutChartData"
+            [options]="donutChartOptions"
+            [type]="donutChartType"
+          >
+          </canvas>
+
+          <div class="units">
+            @for (toiletType of this.donutChartData.labels; track $index) {
+              <div class="caca">
+
+                <div class="indicator">
+                  <div
+                    class="color-indicator"
+                    [style.backgroundColor]="$any(donutChartData.datasets[0].backgroundColor)[$index]"
+                  ></div>
+                  <span>{{ toiletType }}</span>
+                </div>
+                <div class="unit">
+                  <span> {{ this.donutChartData.datasets[0].data[$index] }} Units</span>
+                </div>
+                
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

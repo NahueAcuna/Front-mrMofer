@@ -6,4 +6,5 @@ export interface Toilet {
     price: number;
     active: boolean;
     stock: number;
+    qualities: string[];
 }

@@ -1,0 +1,38 @@
+h3{
+    text-align: center;
+    margin: 5vh;
+    font-size: 40px;
+}
+.desarrollo{
+    text-align: center;
+    margin: 3vh;
+}
+.services{
+    display: flex;
+}
+.images{
+    margin: 50px;
+    border: 1px solid #b9c2cf;
+    width: 300px;  
+    overflow: hidden;
+    border-radius: 20px;
+}
+.images p{
+    color: #555;
+}
+.images img {
+    width: 100%;          /* Ocupa todo el ancho de la tarjeta */
+    height: 200px;        /* Altura fija para todas igual (ajústalo a gusto) */
+    object-fit: cover;    /* LA CLAVE: Recorta la imagen para que llene el espacio sin deformarse */
+ 
+}
+.description{
+    padding: 1vw;
+}
+h4{
+    margin-bottom: 1.5vh;
+}
+.services{
+display: flex;
+justify-content: center;
+}

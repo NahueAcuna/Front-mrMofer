@@ -1,0 +1,9 @@
+*{
+    background-color: #F8F8FF;
+}
+.total{
+    display: flex;
+}
+.principal_content{
+    flex: 1;
+}

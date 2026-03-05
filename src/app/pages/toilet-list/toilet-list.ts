@@ -35,8 +35,4 @@ export class ToiletList implements OnInit {
     this.router.navigate(['toilet-form', id]);
   }
 
-
-
-
-
 }

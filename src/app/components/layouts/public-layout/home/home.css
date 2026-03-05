@@ -1,0 +1,31 @@
+.principal-container{
+    background-color: #F8F8FF;
+}
+.barr{
+    background-color:#2563eb;
+    color: #F8F8FF;
+}
+h2{
+    margin-bottom: 5vh;
+    font-size: 40px;
+    margin-left: 6vw;
+}
+p{
+    margin-bottom: 5vh;
+    font-size: 20px;
+    margin-left: 6vw;
+}
+button{
+    border-radius: 20px;
+    padding: 0.6vw;
+    margin-bottom: 2vh;
+    border-color: blue;
+    color: #374df5;
+    font-size: 15px;
+}
+.presupuesto{
+    margin-left: 6vw;
+}
+.llamanos{
+    margin-left: 2vw;
+}

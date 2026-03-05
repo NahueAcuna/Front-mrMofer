@@ -1,0 +1,85 @@
+<h2>Nueva Reserva</h2>
+
+<form [formGroup]="reservForm" (submit)="postReservation()">
+  <div class="inputs">
+    <div class="input">
+      <label for="name">Nombre del Cliente</label>
+      <input type="text" formControlName="clientName" placeholder="Panadería San Telmo" id="name" />
+      @if (clientName.hasError('required') && clientName.touched) {
+        <div class="tooltip-error">Este campo es obligatorio.</div>
+      }
+    </div>
+    <div class="input">
+      <label for="number">Numero de Telefono</label>
+      <input
+        type="text"
+        formControlName="phoneNumber"
+        placeholder="(+54) 223 306-7755"
+        id="number"
+      />
+      @if (phoneNumber.hasError('required') && phoneNumber.touched) {
+        <div class="tooltip-error">Este campo es obligatorio.</div>
+      }
+    </div>
+    <div class="input">
+      <label for="start">Comienzo</label>
+      <input type="date" formControlName="startDay" id="start" />
+      @if (startDay.hasError('required') && startDay.touched) {
+        <div class="tooltip-error">Este campo es obligatorio.</div>
+      }
+    </div>
+    <div class="input">
+      <label for="end">Fin</label>
+      <input type="date" formControlName="endDay" id="end" />
+      @if (endDay.hasError('required') && endDay.touched) {
+        <div class="tooltip-error">Este campo es obligatorio.</div>
+      }@else if(reservForm.hasError('fechasInvertidas')){
+         <div class="tooltip-error">La fecha final no puede ser anterior a la fecha de inicio</div>
+      }
+
+    </div>
+  </div>
+
+  <div class="toilets">
+    <h3>Baños a reservar</h3>
+
+    <div formArrayName="details">
+      @for (group of details.controls; track group; let idx = $index) {
+        <div [formGroupName]="idx" class="toilet-row" @fadeSlideInOut>
+          <select formControlName="toiletType">
+            @for (toilet of toiletService.toilets; track toilet.name) {
+              <option [value]="toilet.name">{{ toilet.name }}</option>
+            }
+          </select>
+
+          <label>Cant.</label>
+          <input type="number" formControlName="quantity" class="qty" />
+
+          <p class="precio">${{ getToiletPrice(idx) }}</p>
+
+          <button type="button" (click)="removeDetail(idx)" class="btn-delete">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      }
+    </div>
+
+    <button type="button" id="add" (click)="addDetail()">
+      <span class="material-symbols-outlined">add</span>
+      Agregar tipo de baño
+    </button>
+  </div>
+
+  <div id="generate_reservation">
+    <div id="total_price">
+      <span id="text_price"> Precio Total </span>
+      @if(totalPrice()>0){
+
+        <span id="number_price">${{ totalPrice() }} </span>
+      }@else{
+        <span> - </span>
+      }
+    </div>
+    <button id="creat_reservation" [disabled]="reservForm.invalid">Crear Reserva</button>
+  </div>
+</form>

@@ -1,0 +1,72 @@
+header {
+    /* El header ahora actúa solo como contenedor general */
+    display: flex;
+    justify-content: center; /* Centramos el menú flotante horizontalmente */
+    width: 100%;
+    margin: 0;
+}
+
+nav {
+    position: fixed;
+    top: 2vh; /* Lo separamos un poco del techo */
+    z-index: 100;
+    
+    /* El efecto Píldora de Cristal (Glassmorphism) */
+    background: rgba(37, 99, 235, 0.85); /* Tu azul, pero un poco transparente */
+    backdrop-filter: blur(12px); /* Desenfoca lo que haya detrás */
+    -webkit-backdrop-filter: blur(12px);
+    
+    padding: 0.5rem 1rem;
+    border-radius: 50px; /* Bordes totalmente redondeados */
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4); /* Sombra azulada y suave */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Chau borde negro, hola borde translúcido */
+}
+
+ul {
+    display: flex;
+    gap: 0.5vw; /* Separación moderna entre botones */
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white; /* Color base */
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio perfecto entre el ícono y el texto */
+    padding: 10px 20px;
+    border-radius: 30px; /* La cajita interior también es redonda */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transición súper fluida */
+}
+
+/* Micro-interacción al pasar el mouse */
+.box:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Aclara un poco el fondo */
+    transform: translateY(-2px); /* Se levanta apenas para dar sensación de clic */
+}
+
+/* --- El estado ACTIVO de Angular --- */
+.active-link .box {
+    background-color: white;
+    color: #2563eb; /* Invertimos los colores para que resalte */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.material-symbols-outlined {
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}

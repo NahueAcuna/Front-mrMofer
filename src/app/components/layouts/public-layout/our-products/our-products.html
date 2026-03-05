@@ -1,0 +1,41 @@
+<div class="container">
+
+    <h2>Nuestros Baños</h2>
+    <p class="hero">Choose the perfect solution for your needs</p>
+    
+    <ul class="component">
+    
+        @for(toilet of toiletService.toilets; track $index){
+        
+            <li class="card" [class.popular]="toilet.name.toLowerCase().includes('deluxe')">
+                @if(toilet.name.includes('Deluxe')){
+                <div class="badge">Mas pedido</div>
+            }
+                <h3>{{toilet.name}}</h3>
+                <p class="price">${{toilet.price}}/dia</p>
+                <div class="img">
+    
+                    <img src= {{toilet.imgURL}} alt="foto baño">
+                </div>
+    
+                <div class="qualities">
+                    <ul>
+    
+                        @for(qualitie of toilet.qualities; track $index){
+                            
+                            <li class="qualitie">
+    
+                                <span class="material-symbols-outlined">check</span>
+                                <p> {{qualitie}} </p>
+                            </li>
+                        }
+                    </ul>
+    
+                
+                 </div>
+            <button>Ver Baño</button>
+            </li>
+        }
+    </ul>
+</div>
+

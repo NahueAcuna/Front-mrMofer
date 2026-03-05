@@ -1,0 +1,257 @@
+* {
+    box-sizing: border-box;
+}
+
+h2 {
+    margin-left: 8vw;
+    margin-top: 2vh;
+    font-size: 35px;
+}
+
+form {
+   
+    margin-left: 12vw; 
+    margin-top: 4vh;
+    display: flex; 
+    flex-direction: column;
+
+}
+
+/* --- SECCIÓN INPUTS SUPERIORES --- */
+.inputs {
+    display: flex;
+    gap: 2vw; 
+    
+  
+    width: 60vw; 
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    
+    /*Esto hace que se estiren para llenar todo el ancho */
+    flex: 1; 
+    position: relative;
+}
+
+.input label {
+    margin-bottom: 0.5vh;
+}
+
+.input input {
+    /* CAMBIO: width 100% para que llene su cajita */
+    width: 100%; 
+    padding: 1vh;
+    border-radius: 8px;
+    border: 1px solid #dddfef;
+    box-shadow: 0 0 15px #d3d3d3;
+}
+
+/* --- SECCIÓN BAÑOS (CONTENEDOR) --- */
+.toilets {
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dddfef;
+    padding: 4vw;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #d3d3d3;
+    
+    /* Este es el ancho que copiamos arriba */
+    width: 60vw; 
+    min-width: 60vw;
+    margin-bottom: 2vh;
+}
+
+.toilets h3 {
+    margin-top: -1vh;
+    margin-bottom: 3vh;
+    font-size: 25px;
+}
+
+/* --- FILA INDIVIDUAL DE BAÑO --- */
+.toilet-row {
+    background-color: #f3f3ff;
+    display: flex;
+    align-items: center;
+    padding: 2vh;
+    border-radius: 10px;
+    margin-bottom: 1.5vh;
+}
+
+/* Estilos de los inputs dentro de la fila */
+.toilet-row select, 
+.toilet-row input {
+    padding: 0.6vh;
+    border: 1px solid #dddfef;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #d3d3d3;
+    height: 40px; 
+    background-color: white;
+}
+
+/* El Select específico */
+.toilet-row select {
+    flex-grow: 1; 
+    min-width: 150px;
+    cursor: pointer;
+}
+
+/* El Input de Cantidad */
+.qty {
+    width: 70px;
+    margin-left: 0.5vw;
+    text-align: center;
+}
+
+/* Label de Cantidad */
+.toilet-row label {
+    margin-left: 1.5vw;
+    font-weight: 500;
+}
+
+/* El Precio */
+.precio {
+    font-size: 1.1rem;
+    margin: 0 2vw; 
+    min-width: 80px; 
+    text-align: right;
+}
+
+/* Botón Eliminar */
+.btn-delete {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.btn-delete:hover {
+    color:#2563eb;
+}
+
+/* Efectos Focus */
+.input input:focus, 
+.toilet-row input:focus, 
+.toilet-row select:focus {
+    outline: none;
+    box-shadow: 0 0 10px #a3a3a3;
+    transition: 200ms;
+}
+
+/* --- BOTÓN AGREGAR --- */
+#add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vh;
+    padding: 1vh;
+    background-color: #F8F8FF;
+    border: 2px dashed #afaebf;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+#add:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background-color: #f3f3ff;
+    transition: 250ms;
+}
+
+#add span {
+    margin-right: 1vw;
+    font-size: 20px;
+}
+
+#generate_reservation{
+   display: flex;
+   align-items: center;
+   justify-content: end;
+   width: 60vw;
+}
+
+#creat_reservation{
+    background-color: #2563eb;
+    padding: 0.8vw;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+    color: #dddfef;
+    border-radius: 15px;
+    border: 1px solid;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px -4px rgba(0, 0, 0, 0.8);
+}
+#creat_reservation:disabled {
+    cursor: not-allowed; /* Quita la manito y pone el símbolo de bloqueado */
+    opacity: 0.5;        /* Lo hace medio transparente */
+    background-color: #94a3b8; /* Opcional: le pones un color grisáceo */
+    transform: none;     /* Evita que haga efectos raros si tenías un :active o :hover */
+    box-shadow: none;    /* Le quita la sombra para que se vea "plano" */
+}
+
+#total_price{
+display: flex;
+flex-direction: column;
+ margin-right: 3vw;
+ justify-content: center;
+ align-items: center;
+}
+#text_price{
+    font-size: 15px;
+}
+#number_price{
+    font-size: 40px;
+    font-weight: 450;
+}
+@keyframes nacerDeslizando {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px); /* Empieza 10px más arriba */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Termina en su posición normal */
+    }
+}
+
+/* 2. Creamos la clase para los errores del formulario */
+.tooltip-error {
+    position: absolute;
+    top: 105%; /* Justo debajo del input */
+    left: 0;
+    width: max-content;
+    max-width: 200px;
+    background-color: #dc2626; /* Un rojo elegante para errores */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    
+    /* 👇 LA MAGIA: Ejecuta la animación al nacer 👇 */
+    animation: nacerDeslizando 0.3s ease-out forwards;
+}
+
+/* 3. La flechita roja apuntando hacia arriba */
+.tooltip-error::after {
+    content: "";
+    position: absolute;
+    bottom: 100%; 
+    left: 15px; 
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #dc2626 transparent;
+}
