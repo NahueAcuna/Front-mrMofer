@@ -209,12 +209,15 @@ svg{
         align-items: center; 
     }
 }
-@media (max-width:500px){
+@media (max-width:600px){
 
     .boxes {
         margin-top: 50px;
         display: flex;
         flex-direction: column;
         gap: 30px; 
+    }
+    .slide {
+        box-shadow: none;
     }
 }

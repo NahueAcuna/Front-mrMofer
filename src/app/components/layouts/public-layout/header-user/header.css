@@ -106,11 +106,12 @@ a {
         width: max-content; 
     }
     ul {
-        gap: 15px;
+        gap: 10px;
     }
     .box {
         padding: 10px;
         border-radius: 50%; 
+        font-size: 8px;
     }
     .material-symbols-outlined {
         font-size: 20px;

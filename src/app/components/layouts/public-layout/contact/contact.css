@@ -94,3 +94,10 @@ form button:hover{
         gap: 100px;
     }
 }
+
+@media(max-width:450px)  {
+    
+    form input{
+        width: 355px;
+    }
+}

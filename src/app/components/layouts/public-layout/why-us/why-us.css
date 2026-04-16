@@ -94,4 +94,7 @@ h2 {
     gap: 5vw; 
     justify-items: center;
 }
+.quality {
+    width: 95%;
+}
 }

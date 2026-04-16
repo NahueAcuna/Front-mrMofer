@@ -69,13 +69,13 @@ h2{
     left: 0; 
     width: 120px;
     height: 4px; 
-    background-color: #e2e8f0; /* Un amarillo premium o el color que prefieras */
-    border-radius: 50px; /* Puntas redondeadas para que no se vea tosca */
+    background-color: #e2e8f0;
+    border-radius: 50px; 
 }
 .experience {
-    display: block; /* Para que ocupe su propio renglón */
-    margin-left: 6vw; /* Alineado igual que el título */
-    margin-bottom: 3vh; /* Espacio antes del párrafo principal */
+    display: block; 
+    margin-left: 6vw; 
+    margin-bottom: 3vh; 
     
     font-size: 14px;
     font-weight: 600;
@@ -197,5 +197,21 @@ button:active {
         opacity: 0;
     }
 }
+@media(max-width:450px){
+    h2{
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 64px;
+    margin-left: 6vw;
+    font-family: "Playwrite DK Uloopet";
+    font-weight: 500;
+    font-style: normal;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.9);
+    margin-top: 40px;
+}
+#hero{
+    margin-top: 30px;
+}
 
+}
 
