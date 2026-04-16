@@ -28,6 +28,9 @@ export class ToiletService {
   delete(id: number){
     return this.http.delete<Toilet>(`${this.URL}/${id}`);
   }
+  patch(id: number, isActive: boolean){
+    return this.http.patch(`${this.URL}/${id}`,isActive);
+  }
   
   
 }

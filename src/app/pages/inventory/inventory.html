@@ -1,1 +1,121 @@
-<p>inventory works!</p>
+<div class="principal-container">
+  <h1>Inventario</h1>
+
+  <div class="component">
+    <div id="inventory-list">
+      <ul class="list">
+        @for (toilet of inventory; track toilet.id) {
+          <li class="card">
+            <div class="top-card">
+              <img src="{{ toilet.imgURL }}" alt="" />
+              <div>
+                <h2 id="toilet-name">{{ toilet.name }}</h2>
+                <span id="toilet-price">${{ toilet.price }}/dia</span>
+                <span id="toilet-stock">Stock: {{ toilet.stock }}</span>
+              </div>
+            </div>
+
+            <ul class="qualities">
+              @for (qualitie of toilet.qualities; track $index) {
+                <li class="qualitie">
+                  <span class="material-symbols-outlined">check</span>
+                  <p>{{ qualitie }}</p>
+                </li>
+              }
+            </ul>
+            <div class="buttons">
+              <button id="eliminate-button" (click)="deleteToilet(toilet.id!)">
+                <span class="material-symbols-outlined"> delete </span> Eliminar
+              </button>
+              <button id="edit-button" (click)="putToilet(toilet.id!)">
+                <span class="material-symbols-outlined"> edit </span>Actualizar
+              </button>
+              <button
+                id="visibility_off-button"
+                (click)="toiletVisibilityStatus(toilet.id!, toilet.active)"
+                [ngClass]="{
+                  'btn-unpublic': toilet.active,
+                  'btn-public': !toilet.active,
+                }"
+              >
+                @if (toilet.active) {
+                  <span class="material-symbols-outlined"> visibility </span> publico
+                } @else {
+                  <span class="material-symbols-outlined"> visibility_off </span> privado
+                }
+              </button>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+    <form [formGroup]="toiletForm" (submit)="saveToilet()">
+      <h2>Crear nueva Publicacion</h2>
+      <div>
+        <label for="name">Nombre del baño</label>
+        <input type="text" id="name" formControlName="name" />
+      </div>
+      <div id="saas">
+        <div>
+          <label for="price">Precio</label>
+          <input type="text" id="price" formControlName="price" />
+        </div>
+        <div>
+          <label for="stock">Stock</label>
+          <input type="text" id="stock" formControlName="stock" />
+        </div>
+      </div>
+
+      <div>
+        <label for="details">Descripcion</label>
+        <input type="text" id="details" formControlName="details" />
+      </div>
+      <div>
+        <label for="principal-img">Imagen de Portada</label>
+        <input type="file" accept="image/*" id="principal-img" (change)="onFileSelected($event)" />
+      </div>
+      <div>
+        <label for="image-details">Más Imagenes</label>
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          id="image-details"
+          (change)="onMultipleFilesSelected($event)"
+        />
+      </div>
+      <div>
+        <label for="qualities">cualidades</label>
+        <div id="input_qualitie">
+          <input type="text" id="qualities" #input_qualitie />
+          <button
+            type="button"
+            (click)="putQualitiesVisualisation(input_qualitie.value); input_qualitie.value = ''"
+            id="btn_add"
+          >
+            <span class="material-symbols-outlined"> add </span>
+          </button>
+        </div>
+      </div>
+      <div class="qualities_list">
+        @for (qualitie of qualities.controls; track $index) {
+          <div class="qualitie_box">
+            <p>{{ qualitie.value }}</p>
+            <button type="button" (click)="deleteQualitie($index)">
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+          </div>
+        }
+      </div>
+      <label for="input_active">Visible al público</label>
+      <input type="checkbox" formControlName="active" id="input_active" />
+      <button
+        type="submit"
+        id="create-toilet"
+        [disabled]="toiletForm.invalid || (!principalImgFile && detailImagesFiles.length === 0)"
+      >
+        Crear Publicacion
+      </button>
+    </form>
+  </div>
+</div>

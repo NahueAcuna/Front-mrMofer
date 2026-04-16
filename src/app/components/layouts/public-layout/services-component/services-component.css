@@ -1,11 +1,11 @@
 h3{
     text-align: center;
-    margin: 5vh;
+    margin-top: 5vh;
     font-size: 40px;
 }
-.desarrollo{
+#hero{
     text-align: center;
-    margin: 3vh;
+    margin-top: 20px;
 }
 .services{
     display: flex;
@@ -16,15 +16,20 @@ h3{
     width: 300px;  
     overflow: hidden;
     border-radius: 20px;
+    box-shadow:0 5px 8px -3px rgba(70, 70, 70, 0.4);
+    transition: all 0.2s ease-in-out;
+}
+.images:hover{
+
+    scale: calc(1.02);
 }
 .images p{
     color: #555;
 }
 .images img {
-    width: 100%;          /* Ocupa todo el ancho de la tarjeta */
-    height: 200px;        /* Altura fija para todas igual (ajústalo a gusto) */
-    object-fit: cover;    /* LA CLAVE: Recorta la imagen para que llene el espacio sin deformarse */
- 
+    width: 100%;          
+    height: 200px;        
+    object-fit: cover;    
 }
 .description{
     padding: 1vw;
@@ -35,4 +40,38 @@ h4{
 .services{
 display: flex;
 justify-content: center;
+}
+p{
+    color: #64748b;
+}
+.description p{
+    color: #64748b;
+}
+@media(max-width:1250px){
+    .services{
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    justify-items: center;
+    }
+}
+@media(max-width:650px){
+    .services{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    }
+    .images{
+    margin: 50px;
+    border: 1px solid #b9c2cf;
+    width: 300px;  
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow:0 5px 8px -3px rgba(70, 70, 70, 0.4);
+    transition: all 0.2s ease-in-out;
+}
+.images p{
+    padding: 5px;
+}
+    
 }

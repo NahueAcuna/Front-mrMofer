@@ -1,0 +1,231 @@
+.principal-container{
+    display: flex;
+    flex-direction: column;
+}
+.component{
+    display: flex;
+    
+}
+.list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.card{
+    border: 1px solid #e4e4e4;
+    box-shadow: 0 0 15px -9px rgba(0, 0, 0, 0.8);
+    width: 340px;
+    margin: 25px;
+    border-radius: 25px;
+    padding: 10px;
+    background: #fcfcfc;
+
+}
+.card button{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid #e4e4e4;
+    cursor: pointer;
+    
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    margin-top: 10px;
+}
+h2{
+    font-size: 18px;
+}
+img{
+    width: 35%;
+    padding: 10px;
+}
+.top-card{
+    display: flex;
+}
+.top-card div{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.qualities{
+    color: #64748b;
+}
+.qualitie{
+    display: flex;
+}
+.qualitie span{
+     color: rgb(44, 160, 44);
+}
+li{
+    list-style: none;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 0 3vw 3vw 3vw;
+    padding: 20px;
+    gap: 20px;
+    border: 1px solid #e4e4e4;
+    box-shadow: 0 0 15px -9px rgba(0, 0, 0, 0.8);
+    border-radius: 25px;
+    background: #fcfcfc;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease-in-out;
+}
+form div{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+form input{
+    width: 20rem;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #64748b;
+
+}
+#toilet-price{
+    color: #2563eb;
+    font-weight: 500;
+    font-size: 20px;
+}
+#create-toilet{
+    border: 1px;
+}
+
+#eliminate-button{
+    background: rgb(50, 50, 35);
+    color: white;
+}
+#edit-button{
+    background: #2563eb3f;
+    color: #2563eb;
+    font-weight: 550;
+}
+
+#create-toilet{
+    background: #2563eb;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#saas{
+    display: flex;
+    flex-direction: row;
+    gap: 1.8rem;
+}
+#saas input{
+    width: 9rem;
+}
+label{
+    color: #64748b;
+}
+#btn_add{
+    width: 25px;
+    height: 25px;
+    border: 1px solid;
+    border-radius: 5px;
+    text-align: center;
+    color: #2563eb;
+    cursor: pointer;
+}
+
+#input_qualitie{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 20rem;
+}
+.qualities_list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+    min-height: 120px;
+    border: 1px solid #64748b;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.qualitie_box {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background-color: #e2e8f0; 
+    color: #334155; 
+    border: 1px solid #94a3b8;
+    border-radius: 20px; 
+    font-size: 14px;
+    font-weight: 500;
+    width: max-content !important; 
+    margin: 0 !important; 
+}
+
+.qualitie_box p {
+    margin: 0;
+}
+
+
+.qualitie_box button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important; 
+    border: none !important; 
+    padding: 0;
+    margin: 0;
+    color: #475569;
+    cursor: pointer;
+}
+
+.qualitie_box button span {
+    font-size: 16px;
+    font-weight: bold;
+}
+.qualitie_box button span:hover{
+
+    color: #2563eb;
+}
+#create-toilet:disabled {
+    background-color: #94a3b8; /* Gris apagado */
+    cursor: not-allowed; /* Cursor de prohibido */
+    opacity: 0.7;
+}
+
+.btn-public {
+  background: #f1f5f9 !important; 
+  color: #64748b !important; 
+  border: 1px solid transparent !important;
+}
+
+.btn-public:hover {
+  background: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+/* Cuando el baño está oculto (Botón Publicar - Tono verde suave positivo) */
+.btn-unpublic {
+  background: #dcfce7 !important; 
+  color: #16a34a !important; 
+  border: 1px solid transparent !important;
+}
+
+.btn-unpublic:hover {
+  background: #bbf7d0 !important;
+  color: #15803d !important;
+}

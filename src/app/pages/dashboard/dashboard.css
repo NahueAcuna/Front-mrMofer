@@ -1,29 +1,29 @@
-.principal_container{
+.principal_container {
     display: flex;
     width: 100%;
     justify-content: center;
 }
-.dashboard{
+.dashboard {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 3vh 3vw; 
     box-sizing: border-box;
 }
-h2{
+h2 {
     margin: 0;
     font-size: 30px;
 }
-p{
+p {
     margin-top: 1vh;
     color: #555;
 }
-.kpi-container{
+.kpi-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-ul{
+ul {
     display: flex;
     margin-top: 4vh;
     gap: 2vw;
@@ -31,7 +31,7 @@ ul{
     align-items: center;
 }
 
-li{
+li {
     display: flex;
     list-style: none;
     border-radius: 20px;
@@ -42,29 +42,28 @@ li{
     min-width: 220px; 
     justify-content: space-between;
     box-shadow: 0 0 15px -9px rgba(0, 0, 0, 0.8);
-
 }
-h3{
+h3 {
     color: #555;
     font-size: 14px;
     font-weight: 600;
 }
-.value{
+.value {
     font-size: 30px;
     font-weight: 700;
 }
-.content{
+.content {
     display: flex;
     flex-direction: column;
     gap: 2.2vh;
     align-items: flex-start
 }
-.important{
+.important {
     display: flex;
     flex-direction: column;
     gap: 0.5vh;
 }
-.material-symbols-outlined{
+.material-symbols-outlined {
     color: #2563eb;
     padding: 0.5vw;
     background-color: #e4ebf5;
@@ -77,11 +76,11 @@ h3{
 }
 .tooltip {
     position: absolute;
-    bottom: 130%; /* Lo empujamos para que flote por encima del porcentaje */
-    right: 0; /* Lo alineamos a la derecha */
-    width: max-content; /* Se ajusta al tamaño del texto */
-    max-width: 200px; /* Para que no sea infinitamente largo */
-    background-color: #334155; /* Un gris oscuro azulado súper elegante */
+    bottom: 130%; 
+    right: 0; 
+    width: max-content; 
+    max-width: 200px; 
+    background-color: #334155;
     color: white;
     text-align: center;
     padding: 8px 12px;
@@ -89,30 +88,26 @@ h3{
     font-size: 12px;
     font-weight: 500;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    z-index: 10; /* Asegura que no quede tapado por otras cosas */
-
-    /* La magia de la invisibilidad */
+    z-index: 10; 
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease; /* Transición suave */
+    transition: all 0.3s ease; 
 }
 
-/* 3. La flechita apuntando hacia abajo (El toque final) */
 .tooltip::after {
     content: "";
     position: absolute;
-    top: 100%; /* Se pone justo debajo de la cajita oscura */
-    right: 15px; /* Alineada con tu porcentaje */
+    top: 100%; 
+    right: 15px; 
     border-width: 6px;
     border-style: solid;
     border-color: #334155 transparent transparent transparent;
 }
 
-/* 4. El efecto de aparecer al pasar el mouse */
 .comparative:hover .tooltip {
     opacity: 1;
     visibility: visible;
-    bottom: 150%; /* Se levanta un poquito al aparecer dando un efecto fluido */
+    bottom: 150%; 
 }
 .comparative span {
     padding: 0.5vh 1vw;
@@ -122,24 +117,22 @@ h3{
     display: inline-block;
 }
 
-/* 2. La clase para cuando te va bien (Verde) */
 .positivo {
     color: #059669; 
     background-color: #ecfdf5; 
 }
 
-/* 3. La clase para cuando los números bajan (Rojo) */
 .negativo {
     color: #dc2626; 
     background-color: #fef2f2; 
 }
-.chart-card{
+.chart-card {
     display: flex;
     margin-top: 4vh;
     justify-content: space-between;
     width: 100%;
 }
-.canvas-container{
+.canvas-container {
     border: 1px solid #f3f4f6;
     background-color: #fcfcfc;
     width: 900px;
@@ -147,7 +140,7 @@ h3{
     border-radius: 25px;
     box-shadow: 0 0 15px -9px rgba(0, 0, 0, 0.8);
 }
-.donut-container{
+.donut-container {
     flex-direction: column;
     border: 1px solid #f3f4f6;
     background-color: #fcfcfc;
@@ -155,30 +148,280 @@ h3{
     border-radius: 25px;
     box-shadow: 0 0 15px -9px rgba(0, 0, 0, 0.8);
 }
-.donut{
+.donut {
     padding: 0 60px 60px 60px;
-
 }
-.donut-container h2{
+.donut-container h2 {
     margin-left: 30px;
     margin-top: 30px;
 }
-.chart-title{
+.chart-title {
     font-size: 20px;
     margin-bottom: 30px;
 }
 .color-indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%; /* Esto lo convierte en un círculo perfecto */
-  display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; 
+    display: inline-block;
 }
 
-.units{
+.units {
     margin-top: 30px;
+    color: rgb(85, 85, 85);
 }
-.caca{
+.caca {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1vh;
+}
+.reservations {
+    border: 1px solid #f3f4f6;
+    border-radius: 25px;
+    box-shadow: 0 0 15px -9px rgba(0, 0, 0, 0.8);
+    background-color: #fcfcfc;;
+    padding: 20px;
+    width: 700px;
+    margin-top: 6vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30vh;
+}
+.reservations h4 {
+    margin-bottom: 2vh;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th {
+    border-bottom: 1px solid #d5d5d5;
+    font-weight: 550;
+    padding: 10px;
+}
+#reservatio_id {
+    color: #2563eb;
+    font-weight: 500;
+}
+
+td {
+    border-bottom: 1px solid #e3e4e6;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+td button {
+    translate: 50%;
+}
+tbody tr {
+    font-size: 15px;
+}
+tbody td {
+    position: relative;
+}
+
+tbody tr:hover {
+    background-color: #f3f4f6;
+}
+tr {
+    color: #555;
+}
+
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+}
+
+.active {
+    background-color: #e0f2fe; 
+    color: #0284c7;            
+}
+
+.completed {
+    background-color: #dcfce7; 
+    color: #16a34a;            
+}
+.pending {
+    background-color: #ffedd5; 
+    color: #f1935f;            
+}
+tr button {
+    background-color: black;
+    color: #f3f4f6;
+    padding: 8px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+}
+.actived-row {
+    position: relative;
+    background-color: #f8fafc; 
+}
+
+.actived-row td:first-child::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0; 
+    background-color: #2563eb;
+    animation: crecerBorde 0.15s ease-out forwards;
+}
+
+@keyframes crecerBorde {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 4px;
+    }
+}
+
+/* =========================================
+   NUEVOS ESTILOS DEL POPOVER (MODERNIZADOS)
+   ========================================= */
+
+.pophover {
+  position: absolute;
+  left: 105%; 
+  top: 0;
+  width: 260px; 
+  background-color: #ffffff;
+  border: 1px solid #f1f5f9; 
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); 
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+  z-index: 10; 
+  animation: softEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+  text-align: left;
+}
+
+/* --- HEADER MEJORADO --- */
+.pophover-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Un poco más de aire entre el nombre y los datos */
+}
+
+#details_user_name {
+  margin: 0;
+  font-weight: 800;
+  color: #1e293b; 
+  font-size: 19px; /* Un pelín más grande para jerarquía */
+  text-transform: capitalize;
+  letter-spacing: -0.5px; /* Toque moderno en la tipografía */
+}
+
+.detail-text {
+  display: flex; /* Clave para alinear icono y texto */
+  align-items: center; /* Centrado vertical perfecto */
+  gap: 6px; /* Espacio exacto entre el icono y la palabra */
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Reseteamos los iconos para que no hereden el fondo azul de los KPIs */
+.pophover .material-symbols-outlined {
+  font-size: 16px;
+  color: #94a3b8; /* Un gris sutil para que el texto sea el protagonista */
+  background-color: transparent; 
+  padding: 0;
+  border-radius: 0;
+}
+/* ----------------------- */
+
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: #f1f5f9;
+  width: 100%;
+  margin: 0;
+}
+
+.section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.items_reserved {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f8fafc; 
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #f1f5f9;
+}
+
+.item-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.item-name {
+  font-size: 14px;
+  color: #334155;
+  font-weight: 600; /* Le devolvemos un poco de peso al nombre del baño */
+}
+
+.item-qty {
+  background-color: #e0e7ff; 
+  color: #4f46e5; 
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.pophover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.total-price {
+  color: #2563eb;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@keyframes softEnter {
+  0% {
+    opacity: 0;
+    transform: translateX(-15px) scale(0.95); 
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }

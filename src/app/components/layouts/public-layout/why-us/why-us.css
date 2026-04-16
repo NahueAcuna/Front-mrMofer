@@ -1,36 +1,97 @@
-span{
-    color:#2563eb;
-    padding: 0.4vw;
-    border-radius: 10px;
-    background-color: #d6e0ee;
-    margin-right: 1.5vw;
-}
-.qualities{
-    display: flex;
-    justify-content: center;
-    margin: 3vw;
-}
 
-.quality{
-    display: flex;
-    margin: 1vw;
-    align-items: flex-start;
-}
-.quality p{
-
-    color: #555;
-}
-h2{
-    margin: 3vh;
+h2 {
+    margin-top: 3vh;
     text-align: center;
+    font-size: 40px;
+    color: #1e293b;
 }
-.hero{
+
+.hero {
     text-align: center;
     margin-bottom: 5vh;
-}
-.total_block{
-    padding-bottom: 3vh;
-    padding-top: 5vh;
-    background-color: white;
+    color: #64748b;
+    font-size: 16px;
+    margin-top: 20px;
 }
 
+.total_block {
+    padding-bottom: 5vh;
+    padding-top: 5vh;
+    background-color: #fafafa;
+}
+
+.qualities {
+    display: flex;
+    justify-content: center;
+    margin: 0 3vw 2vw 3vw; 
+    gap: 2vw; 
+}
+
+.quality {
+    display: flex;
+    align-items: flex-start;
+    padding: 25px; 
+    border-radius: 20px;
+    background-color: transparent;
+    border: 1px solid transparent; 
+    width: 30%;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+}
+
+.quality p {
+    color: #64748b;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 8px;
+}
+
+.quality h3 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 18px;
+}
+
+.quality span {
+    color: #2563eb;
+    padding: 12px;
+    border-radius: 14px;
+    background-color: #dbeafe;
+    margin-right: 1.5vw;
+    transition: all 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.quality:hover {
+    transform: translateY(-8px); 
+    background-color: #ffffff; 
+    border: 1px solid #f1f5f9; 
+    
+    
+    box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.1), 0 10px 15px -5px rgba(37, 99, 235, 0.05);
+}
+
+
+.quality:hover span {
+    transform: scale(1.15) rotate(-5deg);
+    background-color: #2563eb; 
+    color: #ffffff; 
+    box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3); 
+}
+
+@media(max-width:900px){
+
+ .quality {
+    width: 70%;
+}
+}
+
+@media(max-width:600px){
+
+    .qualities {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 3vw 2vw 3vw; 
+    gap: 5vw; 
+    justify-items: center;
+}
+}

@@ -1,41 +1,53 @@
 <div class="container">
-
     <h2>Nuestros Baños</h2>
     <p class="hero">Choose the perfect solution for your needs</p>
     
     <ul class="component">
-    
-        @for(toilet of toiletService.toilets; track $index){
+        @for(toilet of toiletService.toilets; track toilet.id) {
+            @if(toilet.active){
+
+                <li class="card" [class.popular]="toilet.name.toLowerCase().includes('deluxe')">
+                    
+                    @if(toilet.name.includes('Deluxe')) {
+                        <div class="badge">Mas pedido</div>
+                    }
+                    
+                    <h3>{{toilet.name}}</h3>
+                    <p class="price">${{toilet.price}}/dia</p>
+                    
+                    <div class="img">
+                        <img src={{toilet.imgURL}} alt="foto baño">
+                    </div>
         
-            <li class="card" [class.popular]="toilet.name.toLowerCase().includes('deluxe')">
-                @if(toilet.name.includes('Deluxe')){
-                <div class="badge">Mas pedido</div>
+                    <div class="qualities">
+                        <ul>
+                            @for(qualitie of toilet.qualities; track $index) {
+                                <li class="qualitie">
+                                    <span class="material-symbols-outlined">check</span>
+                                    <p>{{qualitie}}</p>
+                                </li>
+                            }
+                        </ul>
+                     </div>
+                     
+                     <button (click)="focusToilet(toilet)">Ver Baño</button>
+                </li>
             }
-                <h3>{{toilet.name}}</h3>
-                <p class="price">${{toilet.price}}/dia</p>
-                <div class="img">
-    
-                    <img src= {{toilet.imgURL}} alt="foto baño">
-                </div>
-    
-                <div class="qualities">
-                    <ul>
-    
-                        @for(qualitie of toilet.qualities; track $index){
-                            
-                            <li class="qualitie">
-    
-                                <span class="material-symbols-outlined">check</span>
-                                <p> {{qualitie}} </p>
-                            </li>
-                        }
-                    </ul>
-    
-                
-                 </div>
-            <button>Ver Baño</button>
-            </li>
         }
     </ul>
-</div>
 
+    @if(selectedToilet) {
+    <div class="overlay" (click)="closeModal()"></div>
+    
+    <div class="details">
+        <h2>{{selectedToilet.name}}</h2>
+        
+        <img src="https://bañosquimicos-arg.online/wp-content/uploads/2022/12/1.webp" alt="Foto del baño">
+        
+        <p>{{selectedToilet.details}}</p>
+        
+        <button class="cerrar-btn" (click)="closeModal()">Cerrar</button>
+    </div>
+}
+
+</div>

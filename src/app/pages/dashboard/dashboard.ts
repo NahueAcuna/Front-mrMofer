@@ -1,10 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { afterNextRender, Component, OnInit } from '@angular/core';
 import { kpi } from '../../models/Dashboard/kpis';
 import { DashboardService } from '../../services/dashboard-service';
 import { CommonModule } from '@angular/common';
 import { ChartConfiguration } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { MonthlyToiletTypeReserved } from '../../models/Dashboard/MonthlyToiletTypeReserved';
+import { Reservation } from '../../models/Reservation';
+import { ReservationService } from '../../services/reservationService';
+import { ToiletService } from '../../services/toilet-service';
+import { retry } from 'rxjs';
+import { Toilet } from '../../models/toilet';
+import { ReservationRequest } from '../../models/ReservationRequest';
+
+interface ReservationDetails {
+  imgUrl: string;
+  name: string;
+  qty: number
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +26,13 @@ import { MonthlyToiletTypeReserved } from '../../models/Dashboard/MonthlyToiletT
 })
 export class Dashboard implements OnInit{
 
+  reservations : Reservation[];
   kpis!: kpi
+  activatedReservationId : number | undefined = undefined
+  reservation? : Reservation
+  reservationDetails : ReservationDetails[] = []
+  
+  
 
   // -------------------------------- LINE CHART --------------------------------
 
@@ -123,7 +141,9 @@ public donutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
   }
 };
 
-  constructor(private dashboardService: DashboardService){
+  constructor(private dashboardService: DashboardService, private reservationService : ReservationService, private toiletService: ToiletService){
+
+    this.reservations = []
 
   }
   ngOnInit(): void {
@@ -131,6 +151,7 @@ public donutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
     this.getRevenueTrends();
     this.getReservations();
     this.getToilettypesReserved();
+    this.getActiveReservations();
   }
 
   getKpís(){
@@ -198,5 +219,75 @@ public donutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
       error: (e) => {console.log(e)}
     })      
   }
+  getActiveReservations(){
+    this.reservationService.getActiveReservation().subscribe({
+      next: (data) => {this.reservations = data
+        console.log(data)
+        console.log(data.at(0)?.reservationDetails)
+      },
+      error: (e) => {console.log(e)}
+    })
+  }
+  translateStatus(status: string | undefined){
+    let statusTranslated;
+    if(status === 'ACTIVE'){
+      statusTranslated = 'Activa'
+    }
+    if(status === 'PENDING'){
+      statusTranslated = 'Pendiente'
+    }
+    if(status === 'COMPLETED'){
+      statusTranslated = 'Completed'
+    }
+    return statusTranslated
+  }
+
+ activatedReservId(id : number | undefined){
+    if (this.activatedReservationId === id) {
+  
+    this.activatedReservationId = undefined; 
+  } else {
+
+    this.reservationDetails = []
+    this.activatedReservationId = id;
+    this.getReservationById(id)   
+
+  }
+    }
+ 
+ getReservationById(id: number | undefined){
+   if(id != undefined){
+     this.reservationService.getReservationById(id).subscribe({
+       next: (data) => { 
+         this.reservation = data;
+         
+         data.reservationDetails.forEach(d => {
+           
+           this.getToiletDetailsById(d.toiletTypeId, d.quantity);
+         })
+       },
+       error: (e) => {console.log(e)}
+     })
+   }
+ }
+
+ getToiletDetailsById(id: number, quantity: number){
+   this.toiletService.getById(id).subscribe({
+     next: (data) => {
+       
+       const nuevoDetalle: ReservationDetails = {
+         imgUrl: data.imgURL,
+         name: data.name,
+         qty: quantity
+       };
+   
+       this.reservationDetails.push(nuevoDetalle);
+     },
+     error: (e) => {console.log(e)}
+   })
+ }
+
 }
+
+
 

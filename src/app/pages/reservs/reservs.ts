@@ -6,6 +6,7 @@ import { ReservationRequest } from '../../models/ReservationRequest';
 import { ReservationDetailsRequest } from '../../models/ReservationDetailsRequest';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { dateRangeValidator } from '../../validators/data-range';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reservs',
@@ -51,13 +52,15 @@ export class Reservs implements OnInit {
   phoneNumber: FormControl = new FormControl('',Validators.required);
   startDay: FormControl = new FormControl('',Validators.required);
   endDay: FormControl = new FormControl('',Validators.required);
+  id?: number;
   
   // lista dinámica
   details: FormArray = new FormArray<any>([]);
 
   constructor(
     private reservationService: ReservationService, 
-    public toiletService: ToiletService
+    public toiletService: ToiletService,
+    private route: ActivatedRoute
   ) {
     
     this.reservForm = new FormGroup({
@@ -71,6 +74,13 @@ export class Reservs implements OnInit {
 
   ngOnInit(): void {
     this.getToilets();
+    this.id = this.route.snapshot.params['id']
+    if(this.id){
+      this.toiletService.getById(this.id).subscribe({
+        next: (data) => {this.reservForm.patchValue(data)},
+        error: (e) => {console.log(e)}
+      })
+    }
   }
 
   // 1. Función para agregar una fila nueva (Baño + Cantidad)
@@ -137,6 +147,7 @@ export class Reservs implements OnInit {
     this.toiletService.getAll().subscribe({
       next: (data) => {
         this.toiletService.toilets = data;
+        console.log(data)
         
         // Si la lista de filas está vacía, agregamos la primera automáticamente
         if (this.details.length === 0) {
@@ -151,39 +162,51 @@ export class Reservs implements OnInit {
     if (this.reservForm.valid) {
 
       //Hago esto por el tema de que el precio no es parte del formulario y no puedo mandar el valor del formulario por parametro ya que no tendria el valor del precio de la reserva
-      const formValue = this.reservForm.value;
 
-      const reserve: ReservationRequest = {
-        clientName: formValue.clientName,
-        phoneNumber: formValue.phoneNumber,
-        startDate: formValue.startDay,
-        endDate: formValue.endDay,
-        price: this.totalPrice(),
-        details: formValue.details.map((d:any): ReservationDetailsRequest => {
-            
-          const toiletId = this.toiletService.toilets.find(t => t.name === d.toiletType)
-          const reservationDetailsRequest : ReservationDetailsRequest = {
-            toiletTypeId: toiletId?.id || 0, 
-            quantity: d.quantity
-          }
-          return reservationDetailsRequest;
+      if(this.id){
+
+        this.toiletService.put(this.id,this.reservForm.value).subscribe({
+          next: (data) => {console.log(data)},
+          error: (e) => {console.log(e)}
         })
-      }
+      }else{
 
-      this.reservationService.postReservations(reserve).subscribe({
-        next: (data) => {
-          console.log(this.reservForm.value);
-          alert("Reserva creada");
+        const formValue = this.reservForm.value;
   
-          this.reservForm.reset(); 
-          this.details.clear();
-          this.addDetail();
-        },
-        error: (e) => {
-          console.log(e);
-          alert("No se pudo crear la reserva");
+        const reserve: ReservationRequest = {
+          clientName: formValue.clientName,
+          phoneNumber: formValue.phoneNumber,
+          startDate: formValue.startDay,
+          endDate: formValue.endDay,
+          price: this.totalPrice(),
+          details: formValue.details.map((d:any): ReservationDetailsRequest => {
+              
+            const toiletId = this.toiletService.toilets.find(t => t.name === d.toiletType)
+            this.toiletService.toilets.forEach(t => (console.log(toiletId?.name)))
+            console.log(toiletId?.id + "caca feaaaaaaa")
+            const reservationDetailsRequest : ReservationDetailsRequest = {
+              toiletTypeId: toiletId?.id || 0, 
+              quantity: d.quantity
+            }
+            return reservationDetailsRequest;
+          })
         }
-      });
+  
+        this.reservationService.postReservations(reserve).subscribe({
+          next: (data) => {
+            console.log(this.reservForm.value);
+            alert("Reserva creada");
+    
+            this.reservForm.reset(); 
+            this.details.clear();
+            this.addDetail();
+          },
+          error: (e) => {
+            console.log(e);
+            alert("No se pudo crear la reserva");
+          }
+        });
+      }
     } else {
       alert("Por favor completa el formulario");
     }

@@ -1,31 +1,201 @@
 .principal-container{
     background-color: #F8F8FF;
 }
+/*
 .barr{
-    background-color:#2563eb;
+    background-color: #1d4bca;
     color: #F8F8FF;
 }
-h2{
-    margin-bottom: 5vh;
-    font-size: 40px;
-    margin-left: 6vw;
+
+*/
+
+.barr{
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), /* Oscurece al 50% */
+        url('/slide-1.jpg');
+    background-size: cover;       
+    background-position: center;   
+    background-repeat: no-repeat; 
+    width: 100%;
+    height: 100vh;
+    color: #F8F8FF;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
-p{
+.glass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    height: 35px;
+    padding: 0 30px 0 30px;
+    margin-left:6vw ;
+    border-radius: 50px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.315);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    transition: all 0.3s ease-in-out;
+    gap: 20px;
+}
+.glass span{
+    font-size: 22px;
+    font-weight: 300;
+}
+.glass:hover{
+    transform: scale(1.03);
+}
+
+
+
+h2{
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 78px;
+    margin-left: 6vw;
+    font-family: "Playwrite DK Uloopet";
+    font-weight: 500;
+    font-style: normal;
+    text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.9);
+}
+.barr h2::after {
+    content: ''; 
+    position: absolute;
+    bottom: 0;
+    left: 0; 
+    width: 120px;
+    height: 4px; 
+    background-color: #e2e8f0; /* Un amarillo premium o el color que prefieras */
+    border-radius: 50px; /* Puntas redondeadas para que no se vea tosca */
+}
+.experience {
+    display: block; /* Para que ocupe su propio renglón */
+    margin-left: 6vw; /* Alineado igual que el título */
+    margin-bottom: 3vh; /* Espacio antes del párrafo principal */
+    
+    font-size: 14px;
+    font-weight: 600;
+    color: #e2e8f0; 
+    letter-spacing: 1px; 
+    text-transform: uppercase; 
+}
+#hero{
     margin-bottom: 5vh;
     font-size: 20px;
     margin-left: 6vw;
+    text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.9);
 }
-button{
+button {
+    background-color: #1d4bca;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 24px; 
     border-radius: 20px;
-    padding: 0.6vw;
+    border: none; 
     margin-bottom: 2vh;
-    border-color: blue;
-    color: #374df5;
-    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(10, 30, 73, 0.3);
+    transition: all 0.2s ease-in-out; 
+}
+
+
+button:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 15px rgba(37, 99, 235, 0.4);
+    background-color: #1d2bba;
+}
+
+
+button:active {
+    transform: translateY(0); 
+    box-shadow: 0 2px 5px rgba(37, 99, 235, 0.4); 
 }
 .presupuesto{
     margin-left: 6vw;
+    
 }
-.llamanos{
+/* --- TUS ESTILOS BASE DEL BOTÓN (Mantenemos los tuyos) --- */
+.llamanos {
+    background-color: #1d4bca;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 24px; 
+    border-radius: 20px;
+    border: none; 
     margin-left: 2vw;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(10, 30, 73, 0.3);
+    
+    display: inline-flex; 
+    align-items: center;
+    white-space: nowrap; 
+    transition: all 0.3s ease-in-out; 
 }
+
+.llamanos:hover {
+    background: image("public\slide-1.jpg");
+    box-shadow: 0 8px 15px rgba(37, 99, 235, 0.4);
+}
+.whatsapp-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    background-color: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    text-decoration: none; 
+ 
+    
+    transition: all 0.3s ease; 
+}
+
+
+
+.whatsapp-flotante::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid #25D366;
+    z-index: -1;
+    animation: sonar-ripple 1s ease-out infinite;
+}
+
+.whatsapp-flotante svg {
+    width: 35px;
+    height: 35px;
+}
+
+.whatsapp-flotante:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes sonar-ripple {
+    0% {
+        transform: scale(1);
+        opacity: 1; 
+    }
+    100% {
+        transform: scale(1.7);
+        opacity: 0;
+    }
+}
+
+

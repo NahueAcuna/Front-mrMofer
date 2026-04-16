@@ -1,10 +1,12 @@
 h2{
     text-align: center;
     margin-top: 4vh;
+    font-size: 40px;
 }
 .hero{
     text-align: center;
-    margin-top: 2vh;
+    margin-top: 20px;
+    color: #64748b;
 }
 .component{
     display: flex;
@@ -13,6 +15,7 @@ h2{
 }
 li{
     list-style: none;
+    position: relative;
 }
 .qualities{
     display: flex;
@@ -20,6 +23,10 @@ li{
 .qualitie{
     display: flex;
 }
+.qualitie p{
+    color: #64748b;
+}
+
 .card{
     position: relative;
     display: table-row;
@@ -34,20 +41,20 @@ li{
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 .card.popular {
-    border: 2px solid #2563eb; /* Azul fuerte */
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15); /* Sombra azulada */
-    transform: scale(1.02); /* Un poquitito más grande que el resto */
+    border: 2px solid #2563eb; 
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+    transform: scale(1.02); 
 }
 .badge {
     position: absolute;
-    top: -14px; /* Sube la etiqueta para que pise el borde */
+    top: -14px; 
     left: 50%;
-    transform: translateX(-50%); /* Centra la etiqueta perfectamente */
+    transform: translateX(-50%); 
     
-    background-color: #2563eb; /* Fondo azul */
+    background-color: #2563eb; 
     color: white;
     padding: 5px 15px;
-    border-radius: 20px; /* Forma de píldora */
+    border-radius: 20px; 
     font-size: 0.85rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -82,6 +89,7 @@ button{
     color: #F8F8FF;
     background-color: #323223 ;
     border: 1px solid;
+    cursor: pointer;
 }
 .qualities{
     margin-top: 2vh;
@@ -90,4 +98,121 @@ button{
     margin-top: 1vh;
     color:#555
 }
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px); 
+    z-index: 9998; 
+    cursor: pointer;
+}
+
+
+.details {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* LA ARQUITECTURA FACHERA: Ancho fluido pero con límite */
+    width: 90%; 
+    max-width: 450px; /* Nunca va a ser más ancho que esto en PC */
+    height: auto; /* Crece solo según el contenido */
+    
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    z-index: 9999; 
+    
+    /* Cambiamos los 'vw' por 'px' para asegurar que el texto siempre respire igual */
+    padding: 32px; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Centramos todos los textos */
+    gap: 20px; /* Redujimos el gap de 40px a 20px para que no quede tan vacío */
+    
+    animation: zoomInModal 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* El Título del Modal */
+.details h2 {
+    font-size: 28px;
+    color: #1e293b; /* Un gris casi oscuro, más elegante que el negro puro */
+    margin: 0;
+}
+
+/* La Imagen Perfecta */
+.details img {
+    width: 100%;
+    height: 250px; /* Altura fija para mantener el diseño uniforme */
+    object-fit: cover; /* MAGIA: Corta la foto para que encaje sin deformarse */
+    border-radius: 16px; /* Borde un poco más chico que el padre, queda premium */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Sombrita suave a la foto */
+}
+
+/* El Texto Descriptivo */
+.details p {
+    font-size: 16px;
+    color: #475569; /* Gris medio para la lectura */
+    line-height: 1.6; /* Separamos los renglones para que se lea mejor */
+    width: 100%; 
+    margin: 0;
+}
+
+/* El Botón que da ganas de clickear */
+.cerrar-btn {
+    width: 100%; /* Botón de ancho completo tipo App móvil */
+    background-color: #323223;
+    color: #ffffff;
+    border: none;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px; /* Forma de píldora */
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s ease; /* Transición para el hover */
+}
+
+/* El efecto al pasar el mouse por el botón */
+.cerrar-btn:hover {
+    background-color: #4a4a35; /* Un tono un poquito más claro */
+    transform: translateY(-2px); /* Se levanta un milímetro */
+    box-shadow: 0 10px 15px -3px rgba(50, 50, 35, 0.3);
+}
+
+@keyframes zoomInModal {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5); 
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+.carousel-container {
+    margin: 4vw auto;
+    max-width: 90vw; /* Evita que el carrusel desborde la pantalla */
+}
+@media(max-width:1000px) {
+    .component{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    .card{
+        width: 300px;
+        padding: 10px;
+    }
+    .card button{
+        padding: 8px;
+    }
+}
+
 

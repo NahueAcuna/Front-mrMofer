@@ -16,7 +16,13 @@ export class ReservationService {
    }
 
    getReservation(){
-    return this.http.get<ReservationRequest[]>(this.URL);
+    return this.http.get<Reservation[]>(this.URL);
+   }
+   getActiveReservation(){
+    return this.http.get<Reservation[]>(this.URL);
+   }
+   getReservationById(id : number){
+    return this.http.get<Reservation>(`${this.URL}/${id}`)
    }
    postReservations(reservation: ReservationRequest){
     return this.http.post<ReservationRequest>(`${this.URL}`,reservation);

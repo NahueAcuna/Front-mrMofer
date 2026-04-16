@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'aos/dist/aos.css';
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +6,11 @@
 }
 
 html, body {
-  height: 100%; /* Opcional: para que la app ocupe toda la pantalla siempre */
+  height: 100%; 
   
   font-family: "Open Sans", sans-serif;
+}
+html{
+
+  scroll-behavior: smooth;
 }

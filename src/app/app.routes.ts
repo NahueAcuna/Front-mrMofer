@@ -14,6 +14,7 @@ export const routes: Routes = [
         {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
         {path:'dashboard',component: Dashboard},
         {path:'reservs',component: Reservs},
+        {path:'reservs/:id',component: Reservs},
         {path:'inventory',component: Inventory}
     ]},
     {path:'toilet-form',component: ToiletForm},

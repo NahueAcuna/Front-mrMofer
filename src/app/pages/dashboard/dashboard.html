@@ -125,23 +125,103 @@
           <div class="units">
             @for (toiletType of this.donutChartData.labels; track $index) {
               <div class="caca">
-
                 <div class="indicator">
                   <div
                     class="color-indicator"
-                    [style.backgroundColor]="$any(donutChartData.datasets[0].backgroundColor)[$index]"
+                    [style.backgroundColor]="
+                      $any(donutChartData.datasets[0].backgroundColor)[$index]
+                    "
                   ></div>
                   <span>{{ toiletType }}</span>
                 </div>
                 <div class="unit">
                   <span> {{ this.donutChartData.datasets[0].data[$index] }} Units</span>
                 </div>
-                
               </div>
             }
           </div>
         </div>
       </div>
+    </div>
+    <div class="reservations">
+      <h4>Ultimas Reservas</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>ID reserva</th>
+            <th>Cliente</th>
+            <th>Inicio</th>
+            <th>Finalizacion</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (reservation of reservations; track reservation.id) {
+            <tr
+              [ngClass]="{
+                'actived-row': activatedReservationId === reservation.id,
+              }"
+            >
+              <td id="reservatio_id">#{{ reservation.id }}</td>
+              <td>{{ reservation.user.name }}</td>
+              <td>{{ reservation.startDate }}</td>
+              <td>{{ reservation.endDate }}</td>
+
+              <td>
+                <span
+                  class="badge"
+                  [ngClass]="{
+                    active: reservation.status === 'ACTIVE',
+                    pending: reservation.status === 'PENDING',
+                    completed: reservation.status === 'COMPLETED',
+                  }"
+                  >{{ translateStatus(reservation.status) }}</span
+                >
+                <button (click)="activatedReservId(reservation.id)">Detalle</button>
+
+                @if (activatedReservationId === reservation.id) {
+                  <div class="pophover">
+                    <div class="pophover-header">
+                      <span id="details_user_name">{{ reservation.user.name }}</span>
+                      <span class="detail-text"
+                        ><span class="material-symbols-outlined"> call </span>
+                        {{ reservation.user.phoneNumber }}</span
+                      >
+                      <span class="detail-text"
+                        ><span class="material-symbols-outlined"> location_on </span> Dirección
+                        pendiente</span
+                      >
+                    </div>
+
+                    <hr class="divider" />
+
+                    <span class="section-title">Detalle de Reserva</span>
+
+                    <div class="items_reserved">
+                      @for (details of reservationDetails; track $index) {
+                        <div class="item">
+                          <img [src]="details.imgUrl" alt="Foto baño" class="item-img" />
+                          <div class="item-info">
+                            <span class="item-name">{{ details.name }}</span>
+                            <span class="item-qty">x{{ details.qty }}</span>
+                          </div>
+                        </div>
+                      }
+                    </div>
+
+                    <hr class="divider" />
+
+                    <div class="pophover-footer">
+                      <span>Total:</span>
+                      <span class="total-price">${{ reservation.price }}</span>
+                    </div>
+                  </div>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

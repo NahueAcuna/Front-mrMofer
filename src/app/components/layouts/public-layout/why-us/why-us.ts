@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import Aos from 'aos';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-why-us',
@@ -6,6 +8,17 @@ import { Component } from '@angular/core';
   templateUrl: './why-us.html',
   styleUrl: './why-us.css',
 })
-export class WhyUs {
+export class WhyUs implements AfterViewInit{
 
+  ngAfterViewInit() {
+ 
+    setTimeout(() => {
+
+      AOS.init({
+        duration: 800, 
+        once: true,  
+        offset: 100    
+      });
+    })
+  }
 }

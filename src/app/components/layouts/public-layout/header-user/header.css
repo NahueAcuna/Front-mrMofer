@@ -1,30 +1,37 @@
 header {
-    /* El header ahora actúa solo como contenedor general */
     display: flex;
-    justify-content: center; /* Centramos el menú flotante horizontalmente */
+    justify-content: center;
     width: 100%;
     margin: 0;
 }
 
+
 nav {
     position: fixed;
-    top: 2vh; /* Lo separamos un poco del techo */
+    top: 2vh;
+    left: 50%;
     z-index: 100;
-    
-    /* El efecto Píldora de Cristal (Glassmorphism) */
-    background: rgba(37, 99, 235, 0.85); /* Tu azul, pero un poco transparente */
-    backdrop-filter: blur(12px); /* Desenfoca lo que haya detrás */
+    background: rgba(37, 99, 235, 0.85);
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    
     padding: 0.5rem 1rem;
-    border-radius: 50px; /* Bordes totalmente redondeados */
-    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4); /* Sombra azulada y suave */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Chau borde negro, hola borde translúcido */
+    border-radius: 50px;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    
+    
+    width: max-content; 
+    max-width: 95%; 
+    
+    animation: movement 1s forwards;
+    transition: padding 0.3s ease;
 }
 
 ul {
     display: flex;
-    gap: 0.5vw; /* Separación moderna entre botones */
+    gap: 10px;
     margin: 0;
     padding: 0;
 }
@@ -35,28 +42,26 @@ ul li {
 
 a {
     text-decoration: none;
-    color: white; /* Color base */
+    color: white;
 }
 
 .box {
     display: flex;
     align-items: center;
-    gap: 8px; /* Espacio perfecto entre el ícono y el texto */
+    gap: 8px;
     padding: 10px 20px;
-    border-radius: 30px; /* La cajita interior también es redonda */
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transición súper fluida */
+    border-radius: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Micro-interacción al pasar el mouse */
 .box:hover {
-    background-color: rgba(255, 255, 255, 0.15); /* Aclara un poco el fondo */
-    transform: translateY(-2px); /* Se levanta apenas para dar sensación de clic */
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
 }
 
-/* --- El estado ACTIVO de Angular --- */
 .active-link .box {
     background-color: white;
-    color: #2563eb; /* Invertimos los colores para que resalte */
+    color: #2563eb;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -69,4 +74,45 @@ a {
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.3px;
+    display: block;
+}
+
+@keyframes movement {
+    0% {
+        transform: translate(-50%, -30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }  
+}
+
+
+@media(max-width: 650px) {
+    .box {
+        padding: 8px 12px;
+        gap: 5px;
+    }
+    .label {
+        font-size: 12px; 
+    }
+}
+
+
+@media(max-width: 450px) {
+    nav {
+        padding: 0.5rem 1rem;
+        width: max-content; 
+    }
+    ul {
+        gap: 15px;
+    }
+    .box {
+        padding: 10px;
+        border-radius: 50%; 
+    }
+    .material-symbols-outlined {
+        font-size: 20px;
+    }
 }

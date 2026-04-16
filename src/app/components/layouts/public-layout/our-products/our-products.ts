@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ToiletService } from '../../../../services/toilet-service';
+import { ImplicitReceiver } from '@angular/compiler';
+
+
 
 @Component({
   selector: 'app-our-products',
@@ -8,21 +11,30 @@ import { ToiletService } from '../../../../services/toilet-service';
   styleUrl: './our-products.css',
 })
 export class OurProducts implements OnInit{
+  selectedToilet: any | undefined; 
 
-  constructor(public toiletService: ToiletService){
-
-  }
+  constructor(public toiletService: ToiletService) {}
 
   ngOnInit(): void {
     this.getToilets();
-    console.log()
   }
 
-  getToilets(){
+
+  getToilets() {
     this.toiletService.getAll().subscribe({
-      next:(data) => {this.toiletService.toilets = data;
-        console.log(data)},
-      error:(e) => {console.log(e)}
-    })
+      next: (data) => {
+        this.toiletService.toilets = data;
+      },
+      error: (e) => { console.log(e); }
+    });
+  }
+
+ 
+  focusToilet(toilet: any) {
+    this.selectedToilet = toilet;
+  }
+
+  closeModal() {
+    this.selectedToilet = undefined;
   }
 }
