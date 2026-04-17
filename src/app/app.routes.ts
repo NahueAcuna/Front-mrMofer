@@ -17,7 +17,4 @@ export const routes: Routes = [
         {path:'reservs/:id',component: Reservs},
         {path:'inventory',component: Inventory}
     ]},
-    {path:'toilet-form',component: ToiletForm},
-    {path:'toilet-list',component: ToiletList},
-    {path:'toilet-form/:id', component: ToiletForm}
 ];

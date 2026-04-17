@@ -3,7 +3,7 @@
     <p class="hero">Elige la solución perfecta para tus necesidades</p>
     
     <ul class="component">
-        @for(toilet of toiletService.toilets; track toilet.id) {
+        @for(toilet of toiletSinBack; track toilet.id) {
             @if(toilet.active){
 
                 <li class="card" [class.popular]="toilet.name.toLowerCase().includes('deluxe')">

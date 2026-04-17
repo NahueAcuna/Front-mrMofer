@@ -50,7 +50,7 @@ a {
     align-items: center;
     gap: 8px;
     padding: 10px 20px;
-    border-radius: 30px;
+    border-radius:50px ;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -104,14 +104,33 @@ a {
 @media(max-width: 450px) {
     nav {
         padding: 0.5rem 1rem;
-        width: max-content; 
+        width: 97vw; 
+        max-width: 99%;  
     }
     ul {
         gap: 4px;
     }
     .box {
         padding: 10px;
-        border-radius: 50%; 
+        border-radius: 50px; 
+        font-size: 8px;
+    }
+    .material-symbols-outlined {
+        font-size: 20px;
+    }
+}
+@media(max-width: 380px) {
+    nav {
+        padding: 0.5rem 1rem;
+        width: 360px; 
+        max-width: 98%;
+    }
+    ul {
+        gap: 2px;
+    }
+    .box {
+        padding: 5px;
+        border-radius: 50px; 
         font-size: 8px;
     }
     .material-symbols-outlined {
