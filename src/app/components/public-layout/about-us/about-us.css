@@ -1,6 +1,7 @@
 .principal-container{
+    padding-top: 15vh;
     background: #fafafa;
-    margin-bottom: 100px;
+    padding-bottom: 15vh;
 }
 h1{
     text-align: center;

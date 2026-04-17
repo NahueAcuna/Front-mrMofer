@@ -1,12 +1,9 @@
-/* ========================================= */
-/* CONTENEDOR PRINCIPAL */
-/* ========================================= */
+
 .footer {
     background-color: #0f172a;
     color: #e2e8f0;
     padding: 60px 0 0 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 100px; 
 }
 
 .footer-container {

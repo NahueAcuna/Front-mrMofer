@@ -66,7 +66,8 @@ img{
     border-radius: 15px;
 }
 .container{
-    padding-bottom: 1vh;
+    padding-bottom: 10vh;
+    padding-top: 10vh;
 }
 .price{
     color:#2563eb;

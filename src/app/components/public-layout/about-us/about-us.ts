@@ -15,7 +15,6 @@ export class AboutUs implements OnInit, AfterViewInit {
     'https://www.mistermofer.com/images/menu1.jpg',
     'https://www.mistermofer.com/images/banner2.jpg',
     'https://i0.wp.com/destapacioneslavictoria.com.ar/wp-content/uploads/2020/06/Destapacion-puerto-madero.png?fit=817%2C617&ssl=1',
-    'http://localhost:4200/WhatsApp-Image-2023-04-12-at-5.21.57-PM.jpeg'
   ];
 
   currentIndex: number = 0;

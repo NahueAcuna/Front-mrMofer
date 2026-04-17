@@ -186,6 +186,9 @@ button:active {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
 }
+#inicio, #services, #products, #contact {
+     scroll-margin-top: 5vh;
+}
 
 @keyframes sonar-ripple {
     0% {
