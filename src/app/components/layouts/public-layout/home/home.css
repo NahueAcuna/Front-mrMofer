@@ -233,6 +233,7 @@ button:active {
     width: 200px;
     text-align: center;
     margin: 2vw;
+    justify-content: center;
    }
    #hero{
     font-size: 15px;
