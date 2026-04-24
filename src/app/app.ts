@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { AfterViewInit, Component, NgZone, OnDestroy, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
+import Lenis from 'lenis';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,36 @@ import { Header } from './components/header/header';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements AfterViewInit, OnDestroy{
   protected readonly title = signal('frontend-mrMofer');
+  private lenis: any;
+  private reqId: any;
+
+  constructor(private ngZone: NgZone) {}
+
+  ngAfterViewInit(): void {
+    this.ngZone.runOutsideAngular(() => {
+      this.lenis = new Lenis({
+        duration: 1.2, 
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
+
+      const raf = (time: number) => {
+        this.lenis.raf(time);
+        this.reqId = requestAnimationFrame(raf);
+      };
+
+      this.reqId = requestAnimationFrame(raf);
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.lenis) {
+      this.lenis.destroy();
+    }
+    if (this.reqId) {
+      cancelAnimationFrame(this.reqId);
+    }
+  }
 }
