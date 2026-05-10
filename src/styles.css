@@ -10,7 +10,31 @@ html, body {
   
   font-family: "Open Sans", sans-serif;
 }
-html{
+html {
+    /* El primer color es la barrita (naranja), el segundo es el fondo (gris oscuro/negro) */
+    scrollbar-color: rgba(37, 99, 235, 0.85) #f1f1f1; 
+    scrollbar-width: thin; /* Hace la barra un poco más fina y elegante */
+}
 
-  scroll-behavior: smooth;
+/* 2. Para Chrome, Edge, Safari y Opera (Usan pseudo-elementos webkit) */
+
+/* El ancho de la barra entera */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* El fondo de la pista por donde se mueve la barrita */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* El mismo fondo oscuro de tu body */
+}
+
+/* La barrita naranja en sí (el "pulgar") */
+::-webkit-scrollbar-thumb {
+    background: rgba(37, 99, 235, 0.85);
+    border-radius: 10px; /* Le da bordes redondeados para que no sea tan cuadrada */
+}
+
+/* Cuando pasás el mouse por encima de la barrita naranja (efecto hover) */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(8, 49, 138, 0.85); 
 }
